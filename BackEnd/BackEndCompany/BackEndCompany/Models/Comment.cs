@@ -1,6 +1,6 @@
 ﻿namespace BackEndCompany.Models
 {
-    public class Comments
+    public class Comment
     {
         public int Id { get; set; }
         public int Count { get; set; }

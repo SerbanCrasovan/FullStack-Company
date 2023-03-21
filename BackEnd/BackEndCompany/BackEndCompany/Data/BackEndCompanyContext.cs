@@ -7,7 +7,7 @@ namespace BackEndCompany.Data
     {
         public DbSet<Company> Companies { get; set; } = null;
 
-        public DbSet<Comments> Comments { get; set; } = null;
+        public DbSet<Comment> Comments { get; set; } = null;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
