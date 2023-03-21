@@ -1,4 +1,4 @@
-﻿namespace BackEndCompany.Data.Models
+﻿namespace BackEndCompany.Models
 {
     public class Comments
     {
@@ -6,5 +6,8 @@
         public int Count { get; set; }
 
         public int CompanyId { get; set; }
+
+        public Company Company { get; set; } = null;
+    
     }
 }
