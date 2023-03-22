@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ICommentService, CommentService>();
+builder.Services.AddTransient<ICompanyService, CompanyService>();
 
 var app = builder.Build();
 
