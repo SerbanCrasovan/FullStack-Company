@@ -33,8 +33,8 @@ namespace BackEndCompany.Services
 
         public List<GetCommentModel> GetAllComments(int companyId)
         {
-            //return context.Comments.Where(n => n.CompanyId == companyId).ToList();
-            return context.Comments.Where(x => x.CompanyId == companyId).Select(x => new GetCommentModel { Id = x.Id, Text = x.Text, CompanyId = x.CompanyId }).ToList();
+            return context.Comments.Where(x => x.CompanyId == companyId).Select(
+                x => new GetCommentModel { Id = x.Id, Text = x.Text, CompanyId = x.CompanyId }).ToList();
         }
 
         public void UpdateComment(int id, EditCommentModel newComment)
