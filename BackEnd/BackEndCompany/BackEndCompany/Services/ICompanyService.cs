@@ -1,9 +1,10 @@
-﻿using BackEndCompany.Models;
+﻿using BackEndCompany.DTOs;
+using BackEndCompany.Models;
 
 namespace BackEndCompany.Services
 {
     public interface ICompanyService
     {
-        List<Company> GetAllCompanies();
+        List<GetCompanyModel> GetAllCompanies();
     }
 }

@@ -21,7 +21,9 @@ namespace BackEndCompany.Services
 
         public void DeleteComment(int id)
         {
-            throw new NotImplementedException();
+            var comment = context.Comments.FirstOrDefault(c => c.Id == id);
+            context.Comments.Remove(comment);
+            context.SaveChanges();
         }
 
         public List<GetCommentModel> GetAllComments()
@@ -29,14 +31,20 @@ namespace BackEndCompany.Services
             return context.Comments.Select(x => new GetCommentModel { Id = x.Id, Text = x.Text, CompanyId = x.CompanyId }).ToList();
         }
 
-        public List<Comment> GetAllComments(int companyId)
+        public List<GetCommentModel> GetAllComments(int companyId)
         {
-            return context.Comments.Where(n => n.CompanyId == companyId).ToList();
+            //return context.Comments.Where(n => n.CompanyId == companyId).ToList();
+            return context.Comments.Where(x => x.CompanyId == companyId).Select(x => new GetCommentModel { Id = x.Id, Text = x.Text, CompanyId = x.CompanyId }).ToList();
         }
 
-        public void UpdateComment(int id, Comment newComment)
+        public void UpdateComment(int id, EditCommentModel newComment)
         {
-            throw new NotImplementedException();
+            var oldComment = context.Comments.FirstOrDefault(x => x.Id == id);
+            if(oldComment != null)
+            {
+                oldComment.Text = newComment.Text;
+            }
+            context.SaveChanges();
         }
 
         ~CommentService() 
@@ -44,9 +52,5 @@ namespace BackEndCompany.Services
             context?.Dispose();
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

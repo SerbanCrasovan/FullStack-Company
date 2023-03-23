@@ -1,4 +1,5 @@
 ﻿using BackEndCompany.Data;
+using BackEndCompany.DTOs;
 using BackEndCompany.Models;
 
 namespace BackEndCompany.Services
@@ -11,9 +12,11 @@ namespace BackEndCompany.Services
         {
             context = new BackEndCompanyContext();
         }
-        public List<Company> GetAllCompanies()
+        public List<GetCompanyModel> GetAllCompanies()
         {
-            return context.Companies.ToList();
+            return context.Companies.Select(x => new GetCompanyModel { 
+                Id = x.Id, Name = x.Name, 
+                NbOfComments = context.Comments.Where(y => y.CompanyId == x.Id).Count() }).ToList();
         }
         ~CompanyService()
         {

@@ -7,9 +7,11 @@ namespace BackEndCompany.Services
     {
         List<GetCommentModel> GetAllComments();
 
+        List<GetCommentModel> GetAllComments(int companyId);
+
         void AddComment(Comment newComment);
 
-        void UpdateComment(int id, Comment newComment);
+        void UpdateComment(int id, EditCommentModel newComment);
 
         void DeleteComment(int id);
 
