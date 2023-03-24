@@ -1,1 +1,19 @@
-<p>comments works!</p>
+<h2>Company Comments</h2>
+
+<p *ngIf="!comments"><b>Loading...</b></p>
+
+<table class="table table-striped" *ngIf="comments">
+    <thead>
+        <tr>
+            <th>Comment:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comment of comments">
+            <td>{{comment.text}}</td>
+        </tr>
+    </tbody>
+</table>
+  
+
+<app-add-comment></app-add-comment>

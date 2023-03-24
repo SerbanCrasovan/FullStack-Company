@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Company } from 'src/app/interfaces/company';
 import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
@@ -10,6 +11,9 @@ export class CompaniesComponent implements OnInit{
   
   public companies: Company[] = [];
 
+  public selectedCompany?: Company;
+
+
   constructor(private service: CompanyService) { }
 
   ngOnInit(): void {
@@ -18,5 +22,8 @@ export class CompaniesComponent implements OnInit{
     })
   }
 
+  public onSelect(company: Company) {
+    this.selectedCompany = company;
+  }
 
 }

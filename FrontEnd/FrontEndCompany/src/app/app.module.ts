@@ -11,7 +11,7 @@ import { UpdateCommentComponent } from './components/update-comment/update-comme
 import { CompanyService } from './services/company.service';
 import { CommentService } from './services/comment.service';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,13 +26,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'companies', component: CompaniesComponent },
-      { path: 'comments', component: CommentsComponent },
-      { path: 'add-comment', component: AddCommentComponent },
-      { path: 'delete-comment/:id', component: DeleteCommentComponent },
-      { path: 'update-comment/:id', component: UpdateCommentComponent }
-    ])
+    HttpClientModule
   ],
   providers: [CompanyService, CommentService],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
-interface Company
+export interface Company
 {
     id: number;
     name: string;
-    nbofcomments: number;
+    nbOfComments: number;
 }

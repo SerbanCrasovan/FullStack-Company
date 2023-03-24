@@ -1,0 +1,25 @@
+table {
+    border-collapse: collapse;
+    border-spacing: 100px 0;
+    border: 1px solid black;
+    border-radius: 100px;
+  }
+  
+  td {
+    padding: 10px 50px;
+    text-align: left;
+  }
+
+  th {
+    color:darkslategrey;
+  }
+
+  thead {
+    font-size: large;
+  }
+
+  tbody > tr { 
+    background-color: lightgray;
+    border: 1px solid black;
+  }
+  
