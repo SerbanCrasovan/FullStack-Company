@@ -14,6 +14,10 @@ export class CommentsComponent implements OnChanges{
 
   public newCommentText : string = '';
 
+  public editCommentText : string = '';
+
+  public isEditing : boolean = false;
+
   @Input() companyId: number = 0;
   
   constructor(private service: CommentService) {}
@@ -31,6 +35,7 @@ export class CommentsComponent implements OnChanges{
 
     const newComment: Comment = {
       id : 0,
+      isEditing: false,
       companyId : this.companyId,
       text : this.newCommentText
     };
@@ -47,11 +52,22 @@ export class CommentsComponent implements OnChanges{
     });
   }
 
+  public onDelete(comment : Comment) {
+    comment.isEditing = false;
+  }
+
   public updateComment(commentId: number ) {
-    this.service.updateComment(commentId, this.newCommentText).subscribe(updatedComment => {
-      const index = this.comments.findIndex(c => c.id === updatedComment.id);
-      this.comments[index] = updatedComment;
+    this.service.updateComment(commentId, this.editCommentText).subscribe(() => {
+      const comment = this.comments.find(c => c.id === commentId)!;
+      comment.text = this.editCommentText;
+      this.editCommentText = '';
+      comment.isEditing = false;
     })
   }
-  
+
+  public onUpdate(comment: Comment) {
+    this.editCommentText = comment.text;
+    comment.isEditing = true;
+  }
+
 }
