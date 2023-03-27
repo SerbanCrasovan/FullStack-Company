@@ -22,8 +22,7 @@ export class CommentService {
   deleteComment(commentId: number) {
     return this.http.delete<Comment>(this._baseURL + "/DeleteComment/" + commentId);
   }
-  updateComment(commentId: number, text: string)
-  {
+  updateComment(commentId: number, text: string) {
     return this.http.put<Comment>(this._baseURL+ "/UpdateComment/" + commentId, {text});
   }
 }

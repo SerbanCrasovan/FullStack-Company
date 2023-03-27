@@ -12,7 +12,7 @@ export class CommentsComponent implements OnChanges{
   
   public comments: Comment[] = [];
 
-  public newCommentText : string | undefined;
+  public newCommentText : string = '';
 
   @Input() companyId: number = 0;
   
@@ -47,8 +47,11 @@ export class CommentsComponent implements OnChanges{
     });
   }
 
-  public updateComment(commentId: number, ) {
-    console.log("Update comment");
+  public updateComment(commentId: number ) {
+    this.service.updateComment(commentId, this.newCommentText).subscribe(updatedComment => {
+      const index = this.comments.findIndex(c => c.id === updatedComment.id);
+      this.comments[index] = updatedComment;
+    })
   }
   
 }
