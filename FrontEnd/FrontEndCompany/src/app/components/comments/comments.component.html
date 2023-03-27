@@ -5,15 +5,20 @@
 <table class="table table-striped" *ngIf="comments">
     <thead>
         <tr>
-            <th>Comments:</th>
+            <th style="padding-bottom: 10px;">Comments:</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let comment of comments">
             <td>{{comment.text}}</td>
+            <button btn (click)="deleteComment(comment.id)">Delete</button>
+            <button btn (click)="updateComment(comment.id)">Update</button>
         </tr>
     </tbody>
 </table>
   
-
-<app-add-comment></app-add-comment>
+<div class="form-group">
+    <label for="text" class="required">Add comment: </label>
+    <input type="text" class="form-control" id="text" placeholder="Comment text" [(ngModel)]="newCommentText">
+</div>
+<button class="btn btn-success" type="button" (click)="onSubmit()">Add</button>

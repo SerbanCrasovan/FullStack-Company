@@ -1,3 +1,8 @@
+.component {
+  display: flex;
+  justify-content: space-between;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 100px 0;
@@ -31,4 +36,11 @@ table {
     background-color: lightgray;
     border: 1px solid black;
   }
-  
+
+app-comments {
+  margin-right: 100px;
+}
+
+.company-component {
+  margin-left: 40px;
+}

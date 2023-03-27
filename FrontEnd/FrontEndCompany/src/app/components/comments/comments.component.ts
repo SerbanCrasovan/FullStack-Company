@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 
@@ -11,7 +12,9 @@ export class CommentsComponent implements OnChanges{
   
   public comments: Comment[] = [];
 
-  @Input() companyId: number | undefined;
+  public newCommentText : string | undefined;
+
+  @Input() companyId: number = 0;
   
   constructor(private service: CommentService) {}
   
@@ -19,6 +22,33 @@ export class CommentsComponent implements OnChanges{
     this.service.getAllComments(this.companyId!).subscribe(data => {
       this.comments = data;
     })
+  }
+
+  public onSubmit() {
+    if(!this.newCommentText) {
+      return;
+    }
+
+    const newComment: Comment = {
+      id : 0,
+      companyId : this.companyId,
+      text : this.newCommentText
+    };
+
+    this.service.addComment(newComment).subscribe(() => {
+      this.comments.push(newComment);
+      this.newCommentText = '';
+    })
+  }
+    
+  public deleteComment(commentId: number): void {
+    this.service.deleteComment(commentId).subscribe(() => {
+      this.comments = this.comments.filter((comment) => comment.id !== commentId);
+    });
+  }
+
+  public updateComment(commentId: number, ) {
+    console.log("Update comment");
   }
   
 }

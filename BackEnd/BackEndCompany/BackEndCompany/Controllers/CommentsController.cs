@@ -20,7 +20,7 @@ namespace BackEndCompany.Controllers
         public IActionResult AddComment([FromBody]AddCommentModel comment)
         {
             _service.AddComment(new Comment { CompanyId = comment.CompanyId, Text = comment.Text});
-            return Ok("Added");
+            return Ok();
         }
 
         //Read all comments

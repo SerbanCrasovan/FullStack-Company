@@ -1,23 +1,26 @@
-<h2>Company Data</h2>
+<div class="component">
+    <div class="company-component">
+        <h2>Company Data</h2>
 
-<p *ngIf="!companies"><b>Loading...</b></p>
+        <p *ngIf="!companies"><b>Loading...</b></p>
 
-<table class="table table-striped" *ngIf="companies">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Number of Comments</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let company of companies" (click)="onSelect(company)">
-            <td>{{company.id}}</td>
-            <td>{{company.name}}</td>
-            <td>{{company.nbOfComments}}</td>
-        </tr>
-    </tbody>
+        <table class="table table-striped" *ngIf="companies">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Number of Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies" (click)="onSelect(company)">
+                    <td>{{company.id}}</td>
+                    <td>{{company.name}}</td>
+                    <td>{{company.nbOfComments}}</td>
+                </tr>
+            </tbody>
 
-</table>
-
-<app-comments *ngIf="selectedCompany" [companyId]="selectedCompany.id"></app-comments>
+        </table>
+    </div>
+    <app-comments *ngIf="selectedCompany" [companyId]="selectedCompany.id"></app-comments>
+</div>
