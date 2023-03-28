@@ -1,5 +1,4 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from 'src/app/interfaces/comment';
 import { CommentService } from 'src/app/services/comment.service';
 

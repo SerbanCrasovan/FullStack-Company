@@ -12,13 +12,13 @@
         <tr *ngFor="let comment of comments">
             <div *ngIf="!comment.isEditing">
                 <td>{{comment.text}}</td>
-                <button btn (click)="onUpdate(comment)">Update</button>
-                <button style="background-color: red;" btn (click)="deleteComment(comment.id)">Delete</button>
+                <button class="bg-warning" btn (click)="onUpdate(comment)">Update</button>
+                <button class="bg-danger" btn (click)="deleteComment(comment.id)">Delete</button>
             </div>
             <div *ngIf="comment.isEditing">
                 <input [(ngModel)]="editCommentText">
-                <button (click)="updateComment(comment.id)">Save</button>
-                <button (click)="onDelete(comment)">Cancel</button>
+                <button class="bg-success" (click)="updateComment(comment.id)">Save</button>
+                <button class="bg-danger" (click)="onDelete(comment)">Cancel</button>
             </div>
         </tr>
     </tbody>
