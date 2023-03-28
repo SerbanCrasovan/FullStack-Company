@@ -1,5 +1,4 @@
 <h2>Company Comments</h2>
-
 <p *ngIf="!comments"><b>Loading...</b></p>
 
 <table class="table table-striped" *ngIf="comments">
@@ -12,8 +11,8 @@
         <tr *ngFor="let comment of comments">
             <div *ngIf="!comment.isEditing">
                 <td>{{comment.text}}</td>
-                <button class="btn bg-warning" btn (click)="onUpdate(comment)">Update</button>
-                <button class="btn bg-danger" btn (click)="deleteComment(comment.id)">Delete</button>
+                    <button class="btn bg-warning mb-1" btn (click)="onUpdate(comment)">Update</button>
+                    <button class="btn bg-danger mb-1" btn (click)="deleteComment(comment.id)">Delete</button>
             </div>
             <div *ngIf="comment.isEditing">
                 <input [(ngModel)]="editCommentText">
@@ -26,6 +25,6 @@
   
 <div class="form-group">
     <label for="text" class="required">Add comment: </label>
-    <input type="text" class="form-control" id="text" placeholder="Comment text" [(ngModel)]="newCommentText">
+    <input type="text" class="form-control mb-1" id="text" placeholder="Comment text" [(ngModel)]="newCommentText">
 </div>
-<button class="btn btn-success" type="button" (click)="onSubmit()">Add</button>
+<button class="btn btn-success text-dark" type="button" (click)="onSubmit()">Add</button>
